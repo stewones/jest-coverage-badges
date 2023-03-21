@@ -1,5 +1,5 @@
 :exclamation:**This is a fork of pamepeixinho/jest-coverage-badges, but it will stay maintained**:exclamation:
-# Jest Coverage Badges
+# Jest Coverage Badges NG
 
 > Create a group of coverage badge
 
