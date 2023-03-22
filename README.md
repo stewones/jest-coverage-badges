@@ -95,4 +95,5 @@ We have great companies like coveralls and codecov, but it's paid for private re
 
 ## Author of adaptation of (make-coverage-badge)
 
+© 2023 **[Fork and maintainer]** Michael Rodov (rodov.michael@gmail.com)
 © 2018 **[Main Author of Adaptations]** Pamela Peixinho <git@pamepeixinho.com> (https://pamepeixinho.github.io)
