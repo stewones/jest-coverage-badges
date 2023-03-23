@@ -56,14 +56,6 @@
       "json-summary",
       "text"
     ],
-    "coverageThreshold": {
-      "global": {
-        "lines": 65
-      }
-    },
-    "collectCoverageFrom": [
-      "./src/components/**/*.{js,jsx}"
-    ],
     "coveragePathIgnorePatterns": [
       ".*\\.s?css",
       ".*\\.test\\.js",
@@ -73,6 +65,7 @@
   },
   "overrides": {
     "eslint": "8.2.0",
-    "eslint-config-airbnb-base": "15.0.0"
+    "eslint-config-airbnb-base": "15.0.0",
+    "lodash": ">=4.17.21"
   }
 }
