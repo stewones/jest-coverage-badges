@@ -1,6 +1,6 @@
 {
   "name": "jest-coverage-badges-ng",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create a group of coverage badges from jest",
   "main": "cli.js",
   "bin": "cli.js",
