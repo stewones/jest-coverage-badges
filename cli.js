@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-/* eslint-disable semi */
-const mkdirp = require('mkdirp');
+/* eslint-disable semi,no-console */
+const { mkdirp } = require('mkdirp');
 const { get } = require('https');
 const { readFile, writeFile } = require('fs');
 
@@ -18,7 +18,7 @@ const findArgument = (argName, defaultOutput) => {
     return defaultOutput;
   }
 
-  const index = process.argv.findIndex(a => a.match(argName))
+  const index = process.argv.findIndex((a) => a.match(argName))
   if (index < 0) {
     return defaultOutput;
   }
@@ -65,7 +65,7 @@ const download = (url, cb) => {
       file += chunk;
     });
     res.on('end', () => cb(null, file));
-  }).on('error', err => cb(err));
+  }).on('error', (err) => cb(err));
 }
 
 const writeBadgeInFolder = (key, res) => {
@@ -76,20 +76,23 @@ const writeBadgeInFolder = (key, res) => {
   });
 }
 
-const getBadgeByKey = report => (key) => {
+const getBadgeByKey = (report) => (key) => {
   const url = getBadge(report, key);
 
-  download(url, (err, res) => {
+  download(url, async (err, res) => {
     if (err) {
       throw err;
     }
-    mkdirp(outputPath, (folderError) => {
-      if (folderError) {
-        console.error(`Could not create output directory ${folderError}`);
-      } else {
-        writeBadgeInFolder(key, res);
-      }
-    })
+
+    // create a required folder structure, passed in "output" in order to save the badge there
+    try {
+      await mkdirp(outputPath);
+    } catch (e) {
+      console.error(`Could not create output directory "${outputPath}"`);
+      throw e;
+    }
+    // write the badge file to folder just created by mkdirp
+    writeBadgeInFolder(key, res);
   })
 }
 
