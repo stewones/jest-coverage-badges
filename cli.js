@@ -55,7 +55,11 @@ const getBadge = (report, key) => {
   const coverage = (!report.total[key] || typeof report.total[key].pct !== 'number') ? 0 : report.total[key].pct;
   const colour = getColour(coverage);
 
-  return `https://img.shields.io/badge/Coverage${encodeURI(':')}${key}-${coverage}${encodeURI('%')}-${colour}.svg`;
+  const keyTitleCase = key.charAt(0).toUpperCase() + key.slice(1);
+
+  return `https://img.shields.io/badge/${keyTitleCase}-${coverage}${encodeURI(
+    "%"
+  )}-${colour}.svg`;
 }
 
 const download = (url, cb) => {
